@@ -1,19 +1,21 @@
 #!/bin/bash
 
   OSVG=i/svg/dummy.svg
-
-  if [ -f $OSVG ]; then
-       echo "$OSVG does exist"
-       read -p "overwrite ${OSVG}? [y/n]" answer
-  fi
-
-if [[ $answer = y ]] ; then
-
   FONTFAMILY="Fira Sans"
   LETTERLIST=i/letter.list
 
   VSHIFT=-100
 
+  ANSWER=y
+
+  if [ -f $OSVG ]; then
+       echo "$OSVG does exist"
+       read -p "overwrite ${OSVG}? [y/n]" ANSWER
+  fi
+
+if [ $ANSWER = y ] ; then
+
+  if [ -f $OSVG ]; then rm $OSVG ; fi
 # --------------------------------------------------------------------------- # 
   e() { echo $1 >> ${OSVG}; }
 
@@ -21,11 +23,11 @@ if [[ $answer = y ]] ; then
      e '<svg width="1000" height="1000" id="svg" version="1.1"'
      e 'xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"'
      e '>'
-
- for CHARACTER in `cat $LETTERLIST | \
-                   head -n 158 | \
-                   grep -v "^$" | \
-                   sed 's/ /adw32DJSu/g'`
+# --------------------------------------------------------------------------- # 
+  for CHARACTER in `cat $LETTERLIST | \
+                    head -n 158 | \
+                    grep -v "^$" | \
+                    sed 's/ /adw32DJSu/g'`
    do
 
        CHARACTER=`echo $CHARACTER | sed 's/adw32DJSu/ /g' | cut -d " " -f 2`
@@ -88,9 +90,10 @@ if [[ $answer = y ]] ; then
         DISPLAY="display:none"
 
       done 
- done
+  done
+# --------------------------------------------------------------------------- # 
      e '</svg>'
-
+# --------------------------------------------------------------------------- # 
 
 else
      exit 0;
