@@ -22,6 +22,7 @@ DEPENDENCIES:
 
 - recode
 - python-fontforge
+- unaccent
 - ...
 
 KNOWN ISSUES:
@@ -29,4 +30,3 @@ KNOWN ISSUES:
 
 - Accents in description if french
 - VSHIFT wrong
-- ignoring sodipodi elements (guide/visibility)
