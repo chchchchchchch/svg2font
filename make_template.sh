@@ -1,10 +1,10 @@
 #!/bin/bash
 
+  VSHIFT=-91.55
+
   OSVG=i/svg/dummy.svg
   FONTFAMILY="Fira Sans"
   LETTERLIST=i/letter.list
-
-  VSHIFT=-91.55
 
   ANSWER=y
 
@@ -43,7 +43,9 @@ if [ $ANSWER = y ] ; then
               head -1`
   
         UNICODE=`echo $INFO | cut -d " " -f 1`
-        DESCRIPTION=`echo $INFO | cut -d " " -f 3-`
+        DESCRIPTION=`echo $INFO | \
+                     cut -d " " -f 3- | \
+                     unaccent utf-8`
 
         LAYER=$UNICODE
       # GUIDE="XX_$UNICODE ($ORIGINAL = $DESCRIPTION)"
@@ -61,7 +63,7 @@ if [ $ANSWER = y ] ; then
       do
 
      e "<g inkscape:label=\"$LABEL\" inkscape:groupmode=\"layer\"" 
-     e "   $LOCK id=\"$ID\" style=\"$DISPLAY\">"
+     e " $LOCK id=\"$ID\" style=\"$DISPLAY\" transform=\"translate(0,$VSHIFT)\" >"
      e '<flowRoot xml:space="preserve" id="flowRoot"'
 
      e "style=\"font-size:900px;\
@@ -81,14 +83,15 @@ if [ $ANSWER = y ] ; then
                 font-family:$FONTFAMILY;\
                -inkscape-font-specification:$FONTFAMILY\""
      e '><flowRegion id="flowRegion">'
-     e "<rect id=\"rect$UNICODE\" width=\"1000\" height=\"1200\" x=\"0\" y=\"$VSHIFT\" />"
+   # e "<rect id=\"rect$UNICODE\" width=\"1000\" height=\"1200\" x=\"0\" y=\"$VSHIFT\" />"
+     e "<rect id=\"rect$UNICODE\" width=\"1000\" height=\"1200\" x=\"0\" y=\"0\" />"
      e "</flowRegion><flowPara id=\"flowPara\">$CHARACTER</flowPara></flowRoot>"
      e '</g>'
 
       # ATTRIBUTES FOR WORK AND EXPORT LAYER
         LABEL=$LAYER
         ID=$UNICODE
-        LOCK=
+        LOCK=""
         FILL="#000000"
         OPACITY="1"
         DISPLAY="display:none"
