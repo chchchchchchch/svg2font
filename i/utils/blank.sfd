@@ -3,7 +3,7 @@ FontName: XXXX
 FullName: YYYY
 FamilyName: ZZZZ
 Weight: Medium
-Copyright: Created by Christoph Haag for Open Source Publishing during a wonderful residency at Constant Variable. Made with Bash, Inkscape, Python, FontForge.
+Copyright: Made with Bash, Inkscape, Python, FontForge.
 UComments: "2011-2-4: Created." 
 Version: 001.000
 ItalicAngle: 0
@@ -19,7 +19,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1296832076
-ModificationTime: 1400534264
+ModificationTime: 1400751837
 OS2TypoAscent: 0
 OS2TypoAOffset: 1
 OS2TypoDescent: 0
