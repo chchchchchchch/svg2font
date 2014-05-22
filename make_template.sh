@@ -4,7 +4,7 @@
   FONTFAMILY="Fira Sans"
   LETTERLIST=i/letter.list
 
-  VSHIFT=-100
+  VSHIFT=-91.55
 
   ANSWER=y
 
@@ -23,6 +23,10 @@ if [ $ANSWER = y ] ; then
      e '<svg width="1000" height="1000" id="svg" version="1.1"'
      e 'xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"'
      e '>'
+     e '<sodipodi:namedview>'
+     e '<sodipodi:guide position="0,215" orientation="0,1000" id="descent" />'
+     e '</sodipodi:namedview>'
+
 # --------------------------------------------------------------------------- # 
   for CHARACTER in `cat $LETTERLIST | \
                     head -n 158 | \
@@ -77,7 +81,7 @@ if [ $ANSWER = y ] ; then
                 font-family:$FONTFAMILY;\
                -inkscape-font-specification:$FONTFAMILY\""
      e '><flowRegion id="flowRegion">'
-     e "<rect id=\"rect\" width=\"1000\" height=\"1200\" x=\"0\" y=\"$VSHIFT\" />"
+     e "<rect id=\"rect$UNICODE\" width=\"1000\" height=\"1200\" x=\"0\" y=\"$VSHIFT\" />"
      e "</flowRegion><flowPara id=\"flowPara\">$CHARACTER</flowPara></flowRoot>"
      e '</g>'
 
